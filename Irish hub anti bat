@@ -1,0 +1,245 @@
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local root = character:WaitForChild("HumanoidRootPart")
+
+-- Main GUI
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "IrishHub"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.DisplayOrder = 1000
+ScreenGui.Parent = game:GetService("CoreGui")
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 310, 0, 195)
+MainFrame.Position = UDim2.new(0.5, -155, 0.35, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+
+local MainCorner = Instance.new("UICorner")
+MainCorner.CornerRadius = UDim.new(0, 12)
+MainCorner.Parent = MainFrame
+
+-- Title
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 45)
+Title.BackgroundTransparency = 1
+Title.Text = "IRISH HUB ANTI BAT .gg/irsh"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 15
+Title.Parent = MainFrame
+
+local GreenDot = Instance.new("Frame")
+GreenDot.Size = UDim2.new(0, 8, 0, 8)
+GreenDot.Position = UDim2.new(1, -22, 0, 18)
+GreenDot.BackgroundColor3 = Color3.fromRGB(0, 255, 100)
+GreenDot.BorderSizePixel = 0
+GreenDot.Parent = MainFrame
+
+local DotCorner = Instance.new("UICorner")
+DotCorner.CornerRadius = UDim.new(1, 0)
+DotCorner.Parent = GreenDot
+
+-- Anti Bat
+local AntiFrame = Instance.new("Frame")
+AntiFrame.Size = UDim2.new(1, -20, 0, 62)
+AntiFrame.Position = UDim2.new(0, 10, 0, 52)
+AntiFrame.BackgroundColor3 = Color3.fromRGB(28, 28, 34)
+AntiFrame.BorderSizePixel = 0
+AntiFrame.Parent = MainFrame
+
+local AntiCorner = Instance.new("UICorner")
+AntiCorner.CornerRadius = UDim.new(0, 10)
+AntiCorner.Parent = AntiFrame
+
+local AntiLabel = Instance.new("TextLabel")
+AntiLabel.Size = UDim2.new(0.65, 0, 0.5, 0)
+AntiLabel.Position = UDim2.new(0, 16, 0, 8)
+AntiLabel.BackgroundTransparency = 1
+AntiLabel.Text = "Anti Bat"
+AntiLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiLabel.Font = Enum.Font.GothamSemibold
+AntiLabel.TextSize = 16
+AntiLabel.TextXAlignment = Enum.TextXAlignment.Left
+AntiLabel.Parent = AntiFrame
+
+local AntiStatus = Instance.new("TextLabel")
+AntiStatus.Size = UDim2.new(0.65, 0, 0.5, 0)
+AntiStatus.Position = UDim2.new(0, 16, 0.5, 0)
+AntiStatus.BackgroundTransparency = 1
+AntiStatus.Text = "STATUS: ACTIVE"
+AntiStatus.TextColor3 = Color3.fromRGB(0, 255, 100)
+AntiStatus.Font = Enum.Font.GothamMedium
+AntiStatus.TextSize = 13
+AntiStatus.TextXAlignment = Enum.TextXAlignment.Left
+AntiStatus.Parent = AntiFrame
+
+-- Anti Bat Toggle (Exact Style)
+local AntiToggle = Instance.new("TextButton")
+AntiToggle.Size = UDim2.new(0, 52, 0, 28)
+AntiToggle.Position = UDim2.new(1, -70, 0.5, -14)
+AntiToggle.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+AntiToggle.BorderSizePixel = 2
+AntiToggle.BorderColor3 = Color3.fromRGB(0, 255, 100)
+AntiToggle.Text = ""
+AntiToggle.Parent = AntiFrame
+
+local AntiToggleCorner = Instance.new("UICorner")
+AntiToggleCorner.CornerRadius = UDim.new(1, 0)
+AntiToggleCorner.Parent = AntiToggle
+
+local AntiKnob = Instance.new("Frame")
+AntiKnob.Size = UDim2.new(0, 22, 0, 22)
+AntiKnob.Position = UDim2.new(1, -27, 0.5, -11)
+AntiKnob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AntiKnob.BorderSizePixel = 0
+AntiKnob.Parent = AntiToggle
+
+local KnobCorner = Instance.new("UICorner")
+KnobCorner.CornerRadius = UDim.new(1, 0)
+KnobCorner.Parent = AntiKnob
+
+-- Inf Jump
+local JumpFrame = Instance.new("Frame")
+JumpFrame.Size = UDim2.new(1, -20, 0, 62)
+JumpFrame.Position = UDim2.new(0, 10, 0, 122)
+JumpFrame.BackgroundColor3 = Color3.fromRGB(28, 28, 34)
+JumpFrame.BorderSizePixel = 0
+JumpFrame.Parent = MainFrame
+
+local JumpCorner = Instance.new("UICorner")
+JumpCorner.CornerRadius = UDim.new(0, 10)
+JumpCorner.Parent = JumpFrame
+
+local JumpLabel = Instance.new("TextLabel")
+JumpLabel.Size = UDim2.new(0.65, 0, 0.5, 0)
+JumpLabel.Position = UDim2.new(0, 16, 0, 8)
+JumpLabel.BackgroundTransparency = 1
+JumpLabel.Text = "Inf Jump"
+JumpLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+JumpLabel.Font = Enum.Font.GothamSemibold
+JumpLabel.TextSize = 16
+JumpLabel.TextXAlignment = Enum.TextXAlignment.Left
+JumpLabel.Parent = JumpFrame
+
+local JumpStatus = Instance.new("TextLabel")
+JumpStatus.Size = UDim2.new(0.65, 0, 0.5, 0)
+JumpStatus.Position = UDim2.new(0, 16, 0.5, 0)
+JumpStatus.BackgroundTransparency = 1
+JumpStatus.Text = "STATUS: ACTIVE"
+JumpStatus.TextColor3 = Color3.fromRGB(255, 100, 180)
+JumpStatus.Font = Enum.Font.GothamMedium
+JumpStatus.TextSize = 13
+JumpStatus.TextXAlignment = Enum.TextXAlignment.Left
+JumpStatus.Parent = JumpFrame
+
+-- Inf Jump Toggle
+local JumpToggle = Instance.new("TextButton")
+JumpToggle.Size = UDim2.new(0, 52, 0, 28)
+JumpToggle.Position = UDim2.new(1, -70, 0.5, -14)
+JumpToggle.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+JumpToggle.BorderSizePixel = 2
+JumpToggle.BorderColor3 = Color3.fromRGB(255, 100, 180)
+JumpToggle.Text = ""
+JumpToggle.Parent = JumpFrame
+
+local JumpToggleCorner = Instance.new("UICorner")
+JumpToggleCorner.CornerRadius = UDim.new(1, 0)
+JumpToggleCorner.Parent = JumpToggle
+
+local JumpKnob = Instance.new("Frame")
+JumpKnob.Size = UDim2.new(0, 22, 0, 22)
+JumpKnob.Position = UDim2.new(1, -27, 0.5, -11)
+JumpKnob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+JumpKnob.BorderSizePixel = 0
+JumpKnob.Parent = JumpToggle
+
+local JumpKnobCorner = Instance.new("UICorner")
+JumpKnobCorner.CornerRadius = UDim.new(1, 0)
+JumpKnobCorner.Parent = JumpKnob
+
+-- Draggable
+local dragging = false
+local dragInput
+local dragStart
+local startPos
+
+Title.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = MainFrame.Position
+        
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        local delta = input.Position - dragStart
+        MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+
+-- Logic
+local antiBatEnabled = true
+local infJumpEnabled = true
+local connection
+
+local function updateAntiBat()
+    if not antiBatEnabled then return end
+    local dir = humanoid.MoveDirection
+    if dir.Magnitude > 0 then
+        root.AssemblyLinearVelocity = Vector3.new(dir.X * 50, root.AssemblyLinearVelocity.Y, dir.Z * 50)
+    end
+end
+
+AntiToggle.MouseButton1Click:Connect(function()
+    antiBatEnabled = not antiBatEnabled
+    if antiBatEnabled then
+        AntiStatus.Text = "STATUS: ACTIVE"
+        AntiStatus.TextColor3 = Color3.fromRGB(0, 255, 100)
+        AntiToggle.BorderColor3 = Color3.fromRGB(0, 255, 100)
+        AntiKnob.Position = UDim2.new(1, -27, 0.5, -11)
+    else
+        AntiStatus.Text = "STATUS: DISABLED"
+        AntiStatus.TextColor3 = Color3.fromRGB(160, 160, 170)
+        AntiToggle.BorderColor3 = Color3.fromRGB(80, 80, 85)
+        AntiKnob.Position = UDim2.new(0, 3, 0.5, -11)
+    end
+end)
+
+JumpToggle.MouseButton1Click:Connect(function()
+    infJumpEnabled = not infJumpEnabled
+    if infJumpEnabled then
+        JumpStatus.Text = "STATUS: ACTIVE"
+        JumpStatus.TextColor3 = Color3.fromRGB(255, 100, 180)
+        JumpToggle.BorderColor3 = Color3.fromRGB(255, 100, 180)
+        JumpKnob.Position = UDim2.new(1, -27, 0.5, -11)
+    else
+        JumpStatus.Text = "STATUS: DISABLED"
+        JumpStatus.TextColor3 = Color3.fromRGB(160, 160, 170)
+        JumpToggle.BorderColor3 = Color3.fromRGB(80, 80, 85)
+        JumpKnob.Position = UDim2.new(0, 3, 0.5, -11)
+    end
+end)
+
+UserInputService.JumpRequest:Connect(function()
+    if infJumpEnabled then
+        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    end
+end)
+
+connection = RunService.RenderStepped:Connect(updateAntiBat)
+
+print("IrishHub Loaded - Exact UI Match")
